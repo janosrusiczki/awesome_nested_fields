@@ -11,7 +11,7 @@ ActionView::Helpers::FormBuilder.class_eval do
     options[:render_template] = options.key?(:render_template) ? options[:render_template] : true
     options[:escape_template] = options.key?(:escape_template) ? options[:escape_template] : true
     
-    output = @template.capture { fields_for(association, &block) }
+    output = @template.capture { fields_for(association, options, &block) }
     output ||= template.raw ""
     
     if options[:show_empty] and self.object.send(association).empty?
